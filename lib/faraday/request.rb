@@ -57,7 +57,7 @@ module Faraday
         path, query = path.split('?', 2)
       end
       self.path = path
-      self.params.merge_query query, options.params_encoder
+      self.params.merge_query query, Faraday::NestedParamsEncoder.encode(options)
       self.params.update(params) if params
     end
 
